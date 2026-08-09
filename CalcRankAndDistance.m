@@ -6,11 +6,11 @@ if all(maxF~=minF)
     FitnessValues = (FitnessValues - minF)./(maxF - minF);
 end
 
-[Ranks,~] = NDSort(FitnessValues,length(Population));
+[FrontNo,~] = NDSort(FitnessValues,length(Population));
 Distance = CrowdingDistance(FitnessValues,FrontNo); 
 
 for i = 1 : length(Population)
-    Population(i).Rank = Ranks(i);
+    Population(i).Rank = FrontNo(i);
     Population(i).CrowdDis = Distance(i);
 end
 end
