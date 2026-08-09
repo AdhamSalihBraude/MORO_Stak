@@ -5,7 +5,9 @@ minF = min(FitnessValues,[],1);
 if all(maxF~=minF)
     FitnessValues = (FitnessValues - minF)./(maxF - minF);
 end
-[~,~,Ranks,Distance] = rankAndDistance_debugg(FitnessValues,FitnessValues);
+
+[Ranks,~] = NDSort(FitnessValues,length(Population));
+Distance = CrowdingDistance(FitnessValues,FrontNo); 
 
 for i = 1 : length(Population)
     Population(i).Rank = Ranks(i);
